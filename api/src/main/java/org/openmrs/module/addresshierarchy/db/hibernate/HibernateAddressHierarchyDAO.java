@@ -465,11 +465,12 @@ public class HibernateAddressHierarchyDAO implements AddressHierarchyDAO {
 	}
 
     @Override
-    public List<AddressHierarchyEntry> getAddressHierarchyEntriesByLevelAndLikeName(AddressHierarchyLevel level, String name) {
+    public List<AddressHierarchyEntry> getAddressHierarchyEntriesByLevelAndLikeName(AddressHierarchyLevel level, String name, int limit) {
         Session session = sessionFactory.getCurrentSession();
         Criteria criteria = session.createCriteria(AddressHierarchyEntry.class);
         criteria.createCriteria("level").add(Restrictions.eq("levelId", level.getId()));
-        criteria.add(Restrictions.ilike("name", name, MatchMode.ANYWHERE));
+        criteria.add(Restrictions.ilike("name", name, MatchMode.START));
+        criteria.setMaxResults(limit);
         return criteria.list();
     }
 

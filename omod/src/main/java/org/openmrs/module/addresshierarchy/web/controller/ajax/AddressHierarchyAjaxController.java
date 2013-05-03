@@ -124,7 +124,7 @@ public class AddressHierarchyAjaxController {
     @RequestMapping("/module/addresshierarchy/ajax/getPossibleAddressHierarchyEntriesWithParents.form")
     @ResponseBody
 	public ArrayList<ModelMap> getPossibleAddressHierarchyEntriesWithParents(@RequestParam("searchString") String searchString,
-                                                                             @RequestParam("addressField") String addressFieldString) throws IOException {
+                                                                             @RequestParam("addressField") String addressFieldString,@RequestParam("limit") int limit) throws IOException {
 
 		if (StringUtils.isBlank(searchString) || StringUtils.isBlank(addressFieldString)) {
 			log.error("Must specify both an address field and a search string");
@@ -141,7 +141,7 @@ public class AddressHierarchyAjaxController {
             return new ArrayList<ModelMap>();
 		}
 
-		List<AddressHierarchyEntry> entries = ahService.getAddressHierarchyEntriesByLevelAndLikeName(level, searchString);
+		List<AddressHierarchyEntry> entries = ahService.getAddressHierarchyEntriesByLevelAndLikeName(level, searchString, limit);
 
         ArrayList<ModelMap> addresses = new ArrayList<ModelMap>();
 

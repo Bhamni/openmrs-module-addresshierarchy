@@ -1070,7 +1070,7 @@ public class AddressHierarchyServiceImpl implements AddressHierarchyService {
 	}
 
     @Override
-    public List<AddressHierarchyEntry> getAddressHierarchyEntriesByLevelAndLikeName(AddressHierarchyLevel level, String name) {
-        return dao.getAddressHierarchyEntriesByLevelAndLikeName(level, name);    }
+    public List<AddressHierarchyEntry> getAddressHierarchyEntriesByLevelAndLikeName(AddressHierarchyLevel level, String name, int limit) {
+        return dao.getAddressHierarchyEntriesByLevelAndLikeName(level, name, limit);    }
 
 }
