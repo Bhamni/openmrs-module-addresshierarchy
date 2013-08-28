@@ -53,18 +53,17 @@
 	<!--  configure the task that initializes the full address cache if needed -->
 	<bean id="initializeFullAddressCacheTask" class="org.openmrs.module.addresshierarchy.scheduler.InitializeFullAddressCacheTask"/>
 	
-	<bean id="initializeFullAddressCacheTimerTask" class="org.springframework.scheduling.timer.ScheduledTimerTask">
-	    <property name="delay" value="1200000" /> <!-- wait 20 minutes before running the first time (since we load the cache on startup) -->
-	    <property name="period" value="600000" /> <!-- run every 10 minutes -->
-	    <property name="timerTask" ref="initializeFullAddressCacheTask"/>
-	</bean>
-	
-	<bean id="addressHierarchyTimerFactory" class="org.springframework.scheduling.timer.TimerFactoryBean">
-	    <property name="scheduledTimerTasks">
-	        <list>
-	            <ref bean="initializeFullAddressCacheTimerTask"/>
-	        </list>
-	    </property>
-	</bean>
-	
+	<!--<bean id="initializeFullAddressCacheTimerTask" class="org.springframework.scheduling.timer.ScheduledTimerTask">-->
+	    <!--<property name="delay" value="1200000" /> &lt;!&ndash; wait 20 minutes before running the first time (since we load the cache on startup) &ndash;&gt;-->
+	    <!--<property name="period" value="600000" /> &lt;!&ndash; run every 10 minutes &ndash;&gt;-->
+	    <!--<property name="timerTask" ref="initializeFullAddressCacheTask"/>-->
+	<!--</bean>-->
+	<!---->
+	<!--<bean id="addressHierarchyTimerFactory" class="org.springframework.scheduling.timer.TimerFactoryBean">-->
+	    <!--<property name="scheduledTimerTasks">-->
+	        <!--<list>-->
+	            <!--<ref bean="initializeFullAddressCacheTimerTask"/>-->
+	        <!--</list>-->
+	    <!--</property>-->
+	<!--</bean>-->
 </beans>
